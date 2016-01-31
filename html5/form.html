@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        input:valid{
+          color:green;
+            outline: none;
+        }
+        input:invalid{
+            color:red;
+            outline: 2px solid yellow;
+            /*outline-offset: 10px;*/
+        }
+        input:focus{
+            outline: none;
+        }
+        div{
+            width: 200px;
+            height:200px;
+            border: 1px solid red;
+            outline: 1px solid green;
+            outline-offset:5px ;
+            border-radius:50%;
+        }
+    </style>
+</head>
+<body>
+<!--<form action="">-->
+    <!--search:<input type="text">-->
+    <!--<input type="submit" value="搜索">-->
+<!--</form>-->
+<!--<form action="" id="aa" novalidate>-->
+    <form action="" id="aa" >
+
+        <input type="text" name="user" list="one" autocomplete="off" required>
+        <!--<input type="text" required pattern="^\w{5,10}$" autocomplete="off"  form="aa" autofocus="autofocus" required>-->
+        <!--user:<input  name= 'user' type="email" form="aa" placeholder="123@qq.com"  required>-->
+        <!--&lt;!&ndash;user:<input  name= 'user' type="text" form="aa">&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="url" name="xx" required form="aa">&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="submit" name="" value="搜索" form="aa" formaction="bb" formmethod="post">&ndash;&gt;-->
+
+        <!--<input type="date">-->
+        <!--<input type="time">-->
+        <!--<input type="week">-->
+        <!--<input type="range" max=10 min=0 step=1 value=5/>-->
+
+        <!--<input type="number" value="6" step="3" min="0" max="9">-->
+        <!--<input type="search" results="s">-->
+        <!--<input type="tel" required>-->
+        <!--<select name="" id="" multiple name="qq">-->
+            <!--<option value="">1</option>-->
+
+            <!--<option value="">1</option>-->
+            <!--<option value="">2f</option>-->
+            <!--<option value="">1</option>-->
+
+            <!--<option value="">1</option>-->
+            <!--<option value="">2f</option>-->
+        <!--</select>-->
+        <!--<input type="submit" name="" value="搜索" form="aa" formaction="bb" >-->
+        <datalist id="one">
+            <option value="11">s2sss</option>
+            <option value="22">1ssss</option>
+            <option value="33">ss3ss</option>
+
+
+        </datalist>
+        <input type="submit">
+</form>
+<div></div>
+
+<!--<input type="file" >aa-->
+</body>
+</html>

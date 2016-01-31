@@ -1,0 +1,57 @@
+ul,li,body{
+    padding:0;
+    margin:0;
+    list-style: none;
+}
+.container{
+    width:800px;
+    height:auto;
+    margin:0 auto;
+
+}
+/*wi*/
+.menu{
+    width:100%;
+    height:30px;
+    text-align: center;
+    line-height: 30px;
+    background:#c0c0c0;
+}
+.menu .parent{
+    width:12.5%;height:100%;float: left;
+}
+.menu .parent div{
+    width:100%;
+    height:100%;
+}
+.menu .parent .son{
+    width:100%;
+    /*height:100%;*/
+}
+.box{
+    height:500px;
+    position: relative;
+}
+.box .copy{
+    width:100%;
+    height:100%;
+position: absolute;
+    top:0;
+    left: 0;
+
+}
+.box .canvas{
+    position: absolute;
+
+}
+.son{
+    display: none;
+    background:#aaa;
+}
+.son li{
+    background: #aaa;
+
+}
+.son li:hover{
+    background:#000;color:#aaa;
+}

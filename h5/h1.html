@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas{
+            background:#ccc;
+
+        }
+    </style>
+    <script src="js/jQuery.js"></script>
+    <script>
+
+//        window.onload=function(){
+//            var canvas=document.getElementsByTagName("canvas")[0];//获取画布
+//            var cobj=canvas.getContext("2d");
+
+//            cobj.strokeStyle="blue";
+//            cobj.lineWidth="2";
+//            var colorobj=cobj.createLinearGradient(100,100,200,200);
+//            var colorobj=cobj.createRadialGradient(75,50,5,90,60,100);
+//
+//            colorobj.addColorStop(0,"red");
+//            colorobj.addColorStop(1,"pink");
+//            colorobj.createRadialGradient();
+//            colorobj.a
+//            cobj.fillStyle=colorobj;
+//            cobj.shadowBlur=30;
+//            cobj.shadowColor="black";
+//            cobj.shadowOffsetX=0;
+//            cobj.shadowOffsetY=0;
+//            cobj.fillRect(100,100,100,100);//以画布的左上角为原点 (0,0) 大小(100,100) 填充
+//            cobj.cl
+// cobj.strokeRect(100,100,100,100);//绘制线条矩形
+//            cobj.clearRect(20,20,60,60);
+//            cobj.fillRect(0,0,20,20);//以画布的左上角为原点 (0,0) 大小(100,100) 填充
+//            cobj.beginPath();
+//            cobj.moveTo(10,0);
+//            cobj.lineTo(50,50);
+//            cobj.lineTo(50,50);
+//            cobj.lineTo(10,100);
+//            cobj.lineTo(10,0);
+
+//            cobj.closePath();
+//            cobj.stroke();
+//            cobj.moveTo(150,150);
+//            cobj.lineTo(400,400);
+
+
+//            var
+
+
+//        }
+       window.onload=function(){
+            var canvas=document.getElementsByTagName("canvas")[0];
+            var cobj=canvas.getContext("2d");
+//
+            canvas.onmousedown=function(e){
+//                alert(1);
+                console.dir(e);
+                var cx= e.offsetX;
+                var cy= e.offsetY;
+                cobj.moveTo(cx,cy);
+                cobj.beginPath();
+
+                canvas.onmousemove=function(e){
+                    var wx= e.offsetX;
+                    var wy= e.offsetY;
+                    cobj.lineTo(wx,wy);
+                    cobj.stroke();
+
+
+                };
+                canvas.onmouseup=function(){
+                    cobj.closePath();
+                    canvas.onmousemove=null;
+                    canvas.onmouseup=null;
+                }
+            };
+
+           var arr=[];
+           canvas.onmousedown=function(e){
+//                alert(1);
+               console.dir(e);
+               var cx= e.offsetX;
+               var cy= e.offsetY;
+               canvas.onmousemove=function(e){
+                   cobj.clearRect(0,0,canvas.width,canvas.height);
+                   if(arr.length!=0){
+                       cobj.putImageData(arr[arr.length-1],0,0);
+                   }
+                   var wx= e.offsetX;
+                   var wy= e.offsetY;
+                   cobj.beginPath();
+                   cobj.moveTo(cx,cy);
+
+                   cobj.lineTo(wx,wy);
+                   cobj.stroke();
+                   cobj.closePath();
+
+               };
+               canvas.onmouseup=function(){
+                   arr.push(cobj.getImageData(0,0,canvas.width,canvas.height))
+                   canvas.onmousemove=null;
+                   canvas.onmouseup=null;
+               }
+           };
+           var btn=document.getElementsByClassName("button")[0];
+           btn.onclick= function () {
+//               alert(1);
+               var last=arr[arr.length-1];
+//               arr.pop();
+               console.log(arr.length);
+               arr.pop(cobj.getImageData(0,0,canvas.width,canvas.height))
+
+           }
+        }
+
+    </script>
+</head>
+<body>
+<canvas width="500px" height="500px">
+
+</canvas>
+    <div class="button">后退</div>
+</body>
+</html>

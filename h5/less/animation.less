@@ -1,0 +1,40 @@
+
+
+
+
+@r:30;
+@r1:10;
+@a:0;@a1:0;
+@p:10;@p1:20;
+@num:360/@p;
+.round(@i:0) when (@i<=@num) {
+  @select:100/@num*@i*1%;
+  @a:@p*@i;
+  @a1:@p1*@i;
+  @{select}{
+    transform: translate(cos(@a*pi()/180)*@r*1px,sin(@a1*pi()/180)*@r1*1px);
+    //transform: translate(sin(@a*pi()/180)*@r*1px);
+  }
+  .round(@i+1);
+}
+@keyframes quxian {
+  .round();
+}
+*[data-a*=animate-quxian]{
+   animation: quxian 1s linear infinite;
+ }
+
+
+//wait//
+@wnum1:10;
+@wwight:30px;
+@wheight:30px;
+
+
+
+
+
+
+
+
+

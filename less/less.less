@@ -1,0 +1,227 @@
+//显示，隐藏
+@-webkit-keyframes show {
+  0%{
+    -webkit-transform: scale(0,0);
+    opacity: 0;
+
+  }
+  100%{
+    -webkit-transform: scale(1,1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes hide {
+  0%{
+    -webkit-transform: scale(1,1);
+    opacity: 1;
+  }
+  100%{
+    -webkit-transform: scale(0,0);
+    opacity: 0;
+  }
+}
+//淡入淡出
+@-webkit-keyframes fadein {
+     0%{
+
+       opacity: 0;
+     }
+     100%{
+
+       opacity: 1;
+     }
+   }
+@-webkit-keyframes fadeout {
+  0%{
+
+    opacity: 1;
+  }
+  100%{
+
+    opacity: 0;
+  }
+}
+//下拉
+@-webkit-keyframes up {
+  0%{
+    -webkit-transform: scale(1,1);
+
+
+  }
+  100%{
+    -webkit-transform: scale(1,0);
+
+  }
+}
+@-webkit-keyframes down {
+  0%{
+    -webkit-transform: scale(1,0);
+
+
+  }
+  100%{
+    -webkit-transform: scale(1,1);
+
+  }
+}
+//-------------------
+*[data-a=animate-up]{
+  -webkit-animation:  up 1s ease forwards;
+  -webkit-transform-origin: top;
+}
+*[data-a=animate-down]{
+  -webkit-animation:  down 1s ease forwards;
+  -webkit-transform-origin: top;
+}
+//-----------------------
+*[data-a=animate-fadein]{
+  -webkit-animation:  fadein 1s ease forwards;
+  -webkit-transform-origin: left top;
+}
+*[data-a=animate-fadeout]{
+  -webkit-animation:  fadeout 1s ease forwards;
+  -webkit-transform-origin: left top;
+}
+//------------------
+*[data-a=animate-hide]{
+  -webkit-animation:  hide 1s ease forwards;
+  -webkit-transform-origin: top center;
+}
+*[data-a=animate-show]{
+  -webkit-animation:  show 1s ease forwards;
+  -webkit-transform-origin: top center;
+}
+//圆周运动
+@r:30;//半径
+@a:0;//角度
+@p:10;//速度
+@num:360/@p;
+//生成选择器
+.round(@i:0) when (@i<=@num){
+  @select:100/@num*@i*1%;
+  @a:@i*@p;
+  @{select}{
+    -webkit-transform:translate(cos(@a*pi()/180)*@r*1px,sin(@a*pi()/180)*@r*1px) ;
+  }
+  .round(@i+1);
+}
+@-webkit-keyframes  round {
+  .round()
+  //0%{
+  //  -webkit-transform:translate(0,0) ;
+  //}
+}
+*[data-a*=animate-round]{
+  -webkit-animation:  round 2s linear infinite;
+  //-webkit-transform-origin: left top;
+}
+
+
+
+//曲线运动
+@r2:30;
+@r1:10;
+@a2:0;
+@a1:0;
+@p2:3;//速度
+@p1:20;//速度
+@num2:360/@p2;
+//生成选择器
+.round1(@i:0) when (@i<=@num2){
+  @select1:100/@num2*@i*1%;
+  @a2:@i*@p2;
+  @a1:@i*@p1;
+  @{select1}{
+    -webkit-transform:translate(cos(@a2*pi()/180)*@r2*1px,sin(@a1*pi()/180)*@r1*1px) ;
+  }
+  .round1(@i+1);
+}
+
+@-webkit-keyframes  quxian {
+  .round1();
+}
+*[data-a*=animate-quxian]{
+  -webkit-animation:  quxian 2s linear infinite;
+
+}
+
+
+//圆的转圈
+@-webkit-keyframes circle {
+  0%{
+    -webkit-transform:rotate(0deg);
+  }
+  100%{
+    -webkit-transform:rotate(360deg);
+  }
+}
+*[data-a*=animate-circle]{
+  -webkit-animation:  circle 2s linear infinite;
+
+}
+
+
+
+
+
+@height:30px;
+@width:30px;
+@waitr:60px;
+@waitn:8;
+//wait
+.wait(@i:0) when (@i<=@waitn){
+  @se:100/@waitn*@i*1%;
+  @{se}{
+  .wait2(@i1:0) when (@i1<=@waitn){
+    @zz:@i1;
+    @deg:360/@waitn*@i1*pi()/180;
+    .op(@zz) when (@i=@zz){
+      //if(){}
+     box-shadow+:cos(@deg)*@waitr sin(@deg)*@waitr 2px rgba(0,0,0,0.5);
+    }
+    .op(@zz) when not(@i=@zz){
+     box-shadow+:cos(@deg)*@waitr sin(@deg)*@waitr 2px #000;
+    }
+    .op(@zz);
+    .wait2(@i1+1);
+  }
+  .wait2();
+}
+  .wait(@i+1);
+}
+
+@keyframes wait {
+  .wait();
+
+}
+*[data-a=animate-wait]{
+  border-radius: 50%;
+  width:@width;
+  height: @height;
+ animation: wait 2s linear infinite;
+}
+
+
+
+
+/*闪动*/
+@-webkit-keyframes shandong {
+  0%{
+  opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+*[data-a=animate-shandong]{
+  -webkit-animation: shandong 1s linear alternate 3 forwards;
+}
+
+
+
+
+
+
+
+
+
